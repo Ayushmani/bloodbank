@@ -1,0 +1,9 @@
+[
+  {% for row in response %}
+  {
+    {% for col in row %}
+    col,
+    {% endfor %}
+  }
+  {% endfor %}
+]

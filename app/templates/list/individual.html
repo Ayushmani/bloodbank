@@ -1,0 +1,81 @@
+{% extends 'master.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-10">&nbsp;</div>
+    <div class="col-md-2 text-right">
+      <a href="{% url 'create_individual' %}">
+        <button type="button" class="btn btn-default btn_red">
+          <span class="glyphicon glyphicon-plus"></span> New
+        </button>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">&nbsp;</div>
+  </div>
+  {% if object_list|length > 0 %}
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th class="text-center col-sm-2">Blood group</th>
+      <th class="text-center">Name</th>
+      <th class="text-center">Phone number</th>
+      <th class="text-center col-sm-2">&nbsp;</th>
+    </tr>
+    {% for individual in object_list %}
+    <tr>
+      <td class="text-center">{{ individual.bloodgroup.name }}</td>
+      <td>{{ individual.name }}</td>
+      <td>{{ individual.phone_number }}</td>
+      <td class="text-center">
+        <!-- edit -->
+        <a href="{% url 'update_individual' individual.id %}">
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </a>
+        &nbsp;
+        <!-- delete -->
+        <a href="{% url 'delete_individual' individual.id %}">
+          <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="row">
+    <div class="col-md-6 text-left">
+      <ul class="pagination" style="margin: 0;">
+        {% if has_previous == True %}
+        <li><a href="?page={{ previous_page }}">&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        {% endif %}
+        {% for page in page_range %}
+        {% if page == current_page %}
+        <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+        {% else %}
+        <li><a href="?page={{ page }}">{{ page }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if has_next == True %}
+        <li><a href="?page={{ next_page }}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><a href="#">&raquo;</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="col-md-6 text-right">Showing page {{ current_page }} of total {{ total_pages }} pages</div>
+  </div>
+  {% else %}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    </button>
+    <strong>Warning!</strong> No records found.
+  </div>
+  {% endif %}
+
+{% endblock %}

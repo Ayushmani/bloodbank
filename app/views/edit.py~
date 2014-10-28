@@ -1,0 +1,31 @@
+# import libraries
+from django.shortcuts import render
+from django.contrib import messages
+from django.views.generic.edit import FormView 
+from django.views.generic.edit import CreateView
+
+# import models
+from app.models import BloodGroup
+from app.models import Individual
+
+# import forms
+from app.forms import BloodGroupForm
+
+class CreateBloodGroup(CreateView):
+    """
+    view for defining or creating new bloodgroup
+    """
+    model = BloodGroup
+    form_class = BloodGroupForm
+    success_url = "/app/bloodgroup/list"
+    template_name = "app/create/bloodgroup.html"
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, "Bloodgroup added successfully.")
+        return super(CreateBloodGroup, self).form_valid(form)
+
+    def form_invalid(self, form):
+        messages.warning(self.request, "Invalid data, Please check the inputs.")
+        return super(CreateBloodGroup, self).form_invalid(form)
+

@@ -1,0 +1,15 @@
+[
+  {% for entry in response %}
+  {% if forloop.last %}
+  {
+    "bloodgroup": {{ entry.bloodgroup }},
+    "count": {{ entry.count }}
+  }
+  {% else %}
+  {
+    "bloodgroup": {{ entry.bloodgroup }},
+    "count": {{ entry.count }}
+  },
+  {% endif %}
+  {% endfor %}
+]

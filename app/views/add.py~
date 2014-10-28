@@ -1,0 +1,9 @@
+from django.views.generic.edit import CreateView
+
+from app.models import BloodGroup
+from app.models import Individual
+
+class BloodGroupCreate(CreateView):
+
+    model = BloodGroup
+    fields = ['name', 'description']

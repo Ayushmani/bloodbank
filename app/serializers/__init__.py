@@ -1,0 +1,1 @@
+from bloodgroup import BloodGroupSerializer

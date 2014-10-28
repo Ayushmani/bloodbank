@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-1">&nbsp;</div>
+  <div class="col-md-10">
+    <div id="chartdiv" style="height: 600px;">&nbsp;</div>
+  </div>
+  <div class="col-md-1">&nbsp;</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{{ STATIC_URL }}amcharts/amcharts.js"></script>
+<script src="{{ STATIC_URL }}amcharts/pie.js"></script>
+<script src="{{ STATIC_URL }}reports/bloodgroup_population.js"></script>
+{% endblock %}
