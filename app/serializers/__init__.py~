@@ -1,1 +1,2 @@
 from bloodgroup import BloodGroupSerializer
+from individual import IndividualSerializer

@@ -15,6 +15,8 @@ from views import ReportBloodgroupPopulation
 from views import DataBloodgroupPopulation
 from views import ApiListBloodGroup
 from views import ApiUpdateDeleteBloodGroup
+from views import ApiListIndividual
+from views import ApiUpdateDeleteIndividual
 
 urlpatterns = patterns('',
     # list 
@@ -38,4 +40,6 @@ urlpatterns = patterns('',
     # api
     url(r'^api/bloodgroup$', ApiListBloodGroup.as_view(), name='api_list_bloodgroup'),
     url(r'^api/bloodgroup/(?P<pk>\d{1,50})$', ApiUpdateDeleteBloodGroup.as_view(), name='api_update_delete_bloodgroup'),
+    url(r'^api/individual$', ApiListIndividual.as_view(), name='api_list_individual'),
+    url(r'^api/individual/(?P<pk>\d{1,50})$', ApiUpdateDeleteIndividual.as_view(), name='api_update_delete_individual'),
 )

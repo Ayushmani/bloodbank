@@ -1,10 +1,8 @@
 # import libraries
-from django.forms import widgets
 from rest_framework import serializers
 
 # import models
 from app.models import BloodGroup
-from app.models import Individual
 
 class BloodGroupSerializer(serializers.ModelSerializer):
 

@@ -17,3 +17,5 @@ from reports import DataBloodgroupPopulation
 
 from api import ApiListBloodGroup
 from api import ApiUpdateDeleteBloodGroup
+from api import ApiListIndividual
+from api import ApiUpdateDeleteIndividual
