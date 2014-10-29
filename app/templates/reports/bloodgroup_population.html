@@ -2,16 +2,20 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-md-1">&nbsp;</div>
-  <div class="col-md-10">
-    <div id="chartdiv" style="height: 600px;">&nbsp;</div>
+  <div class="col-md-6 text-center">
+    Pie chart <br />
+    <div id="piechart" style="height: 300px;">Pie chart</div>
   </div>
-  <div class="col-md-1">&nbsp;</div>
+  <div class="col-md-6 text-center">
+    Line chart <br />
+    <div id="linechart" style="height: 300px;">Line chart</div>
+  </div>
 </div>
 {% endblock %}
 
 {% block script %}
 <script src="{{ STATIC_URL }}amcharts/amcharts.js"></script>
 <script src="{{ STATIC_URL }}amcharts/pie.js"></script>
+<script src="{{ STATIC_URL }}amcharts/serial.js"></script>
 <script src="{{ STATIC_URL }}reports/bloodgroup_population.js"></script>
 {% endblock %}

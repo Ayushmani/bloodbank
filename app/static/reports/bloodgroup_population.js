@@ -3,10 +3,10 @@ $(function(){
 var chartData;
 var url = "/app/data/bloodgroup-population";
 
-/* draw chart */
-function draw_chart(){
+/* draw pie chart */
+function draw_pie_chart(){
 
-  var chart = AmCharts.makeChart("chartdiv", {
+  var chart = AmCharts.makeChart("piechart", {
     "type": "pie",
     "theme": "none",
     "dataProvider": chartData,
@@ -21,10 +21,30 @@ function draw_chart(){
 
 }
 
+/* draw line chart */
+function draw_line_chart(){
+
+  var chart = AmCharts.makeChart("linechart", {
+    "type": "serial",
+    "theme": "none",
+    "dataProvider": chartData,
+    "categoryField": "bloodgroup",
+    "graphs": [{
+      "valueField": "count"
+    }],
+    "chartCursor": {
+      "oneBalloonOnly": true
+    },
+  });
+  chart.pathToImages = "/amcharts/images/";
+
+}
+
 /* fetch data */
 $.get(url, function(data){
   chartData = jQuery.parseJSON(data);
-  draw_chart();
+  draw_pie_chart();
+  draw_line_chart();
 });
 
 });
